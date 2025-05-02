@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model CodingSite
+ * 
+ */
+export type CodingSite = $Result.DefaultSelection<Prisma.$CodingSitePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.codingSite`: Exposes CRUD operations for the **CodingSite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CodingSites
+    * const codingSites = await prisma.codingSite.findMany()
+    * ```
+    */
+  get codingSite(): Prisma.CodingSiteDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    CodingSite: 'CodingSite'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "codingSite"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      CodingSite: {
+        payload: Prisma.$CodingSitePayload<ExtArgs>
+        fields: Prisma.CodingSiteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CodingSiteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CodingSiteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          findFirst: {
+            args: Prisma.CodingSiteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CodingSiteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          findMany: {
+            args: Prisma.CodingSiteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>[]
+          }
+          create: {
+            args: Prisma.CodingSiteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          createMany: {
+            args: Prisma.CodingSiteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CodingSiteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>[]
+          }
+          delete: {
+            args: Prisma.CodingSiteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          update: {
+            args: Prisma.CodingSiteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          deleteMany: {
+            args: Prisma.CodingSiteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CodingSiteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CodingSiteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>[]
+          }
+          upsert: {
+            args: Prisma.CodingSiteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodingSitePayload>
+          }
+          aggregate: {
+            args: Prisma.CodingSiteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodingSite>
+          }
+          groupBy: {
+            args: Prisma.CodingSiteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodingSiteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CodingSiteCountArgs<ExtArgs>
+            result: $Utils.Optional<CodingSiteCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    codingSite?: CodingSiteOmit
   }
 
   /* Types for Logging */
@@ -1081,6 +1172,7 @@ export namespace Prisma {
     IsVerified?: boolean
     VerificationToken?: boolean
     VerifyOtpExpireAt?: boolean
+    codingSites?: boolean | User$codingSitesArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1126,10 +1218,17 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"username" | "name" | "email" | "image" | "phone" | "password" | "createdAt" | "updatedAt" | "IsVerified" | "VerificationToken" | "VerifyOtpExpireAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codingSites?: boolean | User$codingSitesArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      codingSites: Prisma.$CodingSitePayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       username: string
       name: string | null
@@ -1536,6 +1635,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    codingSites<T extends User$codingSitesArgs<ExtArgs> = {}>(args?: Subset<T, User$codingSitesArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1593,6 +1693,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1611,6 +1715,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1628,6 +1736,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1677,6 +1789,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1725,6 +1841,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1767,6 +1887,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1815,6 +1939,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1882,6 +2010,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1908,6 +2040,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1928,6 +2064,25 @@ export namespace Prisma {
   }
 
   /**
+   * User.codingSites
+   */
+  export type User$codingSitesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    where?: CodingSiteWhereInput
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1939,6 +2094,1081 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CodingSite
+   */
+
+  export type AggregateCodingSite = {
+    _count: CodingSiteCountAggregateOutputType | null
+    _min: CodingSiteMinAggregateOutputType | null
+    _max: CodingSiteMaxAggregateOutputType | null
+  }
+
+  export type CodingSiteMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    codeforcesProfile: string | null
+    codechefProfile: string | null
+    leetcodeProfile: string | null
+    githubProfile: string | null
+  }
+
+  export type CodingSiteMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    codeforcesProfile: string | null
+    codechefProfile: string | null
+    leetcodeProfile: string | null
+    githubProfile: string | null
+  }
+
+  export type CodingSiteCountAggregateOutputType = {
+    id: number
+    userId: number
+    codeforcesProfile: number
+    codechefProfile: number
+    leetcodeProfile: number
+    githubProfile: number
+    _all: number
+  }
+
+
+  export type CodingSiteMinAggregateInputType = {
+    id?: true
+    userId?: true
+    codeforcesProfile?: true
+    codechefProfile?: true
+    leetcodeProfile?: true
+    githubProfile?: true
+  }
+
+  export type CodingSiteMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    codeforcesProfile?: true
+    codechefProfile?: true
+    leetcodeProfile?: true
+    githubProfile?: true
+  }
+
+  export type CodingSiteCountAggregateInputType = {
+    id?: true
+    userId?: true
+    codeforcesProfile?: true
+    codechefProfile?: true
+    leetcodeProfile?: true
+    githubProfile?: true
+    _all?: true
+  }
+
+  export type CodingSiteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodingSite to aggregate.
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodingSites to fetch.
+     */
+    orderBy?: CodingSiteOrderByWithRelationInput | CodingSiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CodingSiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodingSites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodingSites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CodingSites
+    **/
+    _count?: true | CodingSiteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CodingSiteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CodingSiteMaxAggregateInputType
+  }
+
+  export type GetCodingSiteAggregateType<T extends CodingSiteAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodingSite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCodingSite[P]>
+      : GetScalarType<T[P], AggregateCodingSite[P]>
+  }
+
+
+
+
+  export type CodingSiteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodingSiteWhereInput
+    orderBy?: CodingSiteOrderByWithAggregationInput | CodingSiteOrderByWithAggregationInput[]
+    by: CodingSiteScalarFieldEnum[] | CodingSiteScalarFieldEnum
+    having?: CodingSiteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CodingSiteCountAggregateInputType | true
+    _min?: CodingSiteMinAggregateInputType
+    _max?: CodingSiteMaxAggregateInputType
+  }
+
+  export type CodingSiteGroupByOutputType = {
+    id: string
+    userId: string
+    codeforcesProfile: string | null
+    codechefProfile: string | null
+    leetcodeProfile: string | null
+    githubProfile: string | null
+    _count: CodingSiteCountAggregateOutputType | null
+    _min: CodingSiteMinAggregateOutputType | null
+    _max: CodingSiteMaxAggregateOutputType | null
+  }
+
+  type GetCodingSiteGroupByPayload<T extends CodingSiteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CodingSiteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CodingSiteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CodingSiteGroupByOutputType[P]>
+            : GetScalarType<T[P], CodingSiteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CodingSiteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    codeforcesProfile?: boolean
+    codechefProfile?: boolean
+    leetcodeProfile?: boolean
+    githubProfile?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codingSite"]>
+
+  export type CodingSiteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    codeforcesProfile?: boolean
+    codechefProfile?: boolean
+    leetcodeProfile?: boolean
+    githubProfile?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codingSite"]>
+
+  export type CodingSiteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    codeforcesProfile?: boolean
+    codechefProfile?: boolean
+    leetcodeProfile?: boolean
+    githubProfile?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codingSite"]>
+
+  export type CodingSiteSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    codeforcesProfile?: boolean
+    codechefProfile?: boolean
+    leetcodeProfile?: boolean
+    githubProfile?: boolean
+  }
+
+  export type CodingSiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "codeforcesProfile" | "codechefProfile" | "leetcodeProfile" | "githubProfile", ExtArgs["result"]["codingSite"]>
+  export type CodingSiteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CodingSiteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CodingSiteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CodingSitePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodingSite"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      codeforcesProfile: string | null
+      codechefProfile: string | null
+      leetcodeProfile: string | null
+      githubProfile: string | null
+    }, ExtArgs["result"]["codingSite"]>
+    composites: {}
+  }
+
+  type CodingSiteGetPayload<S extends boolean | null | undefined | CodingSiteDefaultArgs> = $Result.GetResult<Prisma.$CodingSitePayload, S>
+
+  type CodingSiteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodingSiteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodingSiteCountAggregateInputType | true
+    }
+
+  export interface CodingSiteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodingSite'], meta: { name: 'CodingSite' } }
+    /**
+     * Find zero or one CodingSite that matches the filter.
+     * @param {CodingSiteFindUniqueArgs} args - Arguments to find a CodingSite
+     * @example
+     * // Get one CodingSite
+     * const codingSite = await prisma.codingSite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CodingSiteFindUniqueArgs>(args: SelectSubset<T, CodingSiteFindUniqueArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CodingSite that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CodingSiteFindUniqueOrThrowArgs} args - Arguments to find a CodingSite
+     * @example
+     * // Get one CodingSite
+     * const codingSite = await prisma.codingSite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CodingSiteFindUniqueOrThrowArgs>(args: SelectSubset<T, CodingSiteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodingSite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteFindFirstArgs} args - Arguments to find a CodingSite
+     * @example
+     * // Get one CodingSite
+     * const codingSite = await prisma.codingSite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CodingSiteFindFirstArgs>(args?: SelectSubset<T, CodingSiteFindFirstArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodingSite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteFindFirstOrThrowArgs} args - Arguments to find a CodingSite
+     * @example
+     * // Get one CodingSite
+     * const codingSite = await prisma.codingSite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CodingSiteFindFirstOrThrowArgs>(args?: SelectSubset<T, CodingSiteFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CodingSites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CodingSites
+     * const codingSites = await prisma.codingSite.findMany()
+     * 
+     * // Get first 10 CodingSites
+     * const codingSites = await prisma.codingSite.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const codingSiteWithIdOnly = await prisma.codingSite.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CodingSiteFindManyArgs>(args?: SelectSubset<T, CodingSiteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CodingSite.
+     * @param {CodingSiteCreateArgs} args - Arguments to create a CodingSite.
+     * @example
+     * // Create one CodingSite
+     * const CodingSite = await prisma.codingSite.create({
+     *   data: {
+     *     // ... data to create a CodingSite
+     *   }
+     * })
+     * 
+     */
+    create<T extends CodingSiteCreateArgs>(args: SelectSubset<T, CodingSiteCreateArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CodingSites.
+     * @param {CodingSiteCreateManyArgs} args - Arguments to create many CodingSites.
+     * @example
+     * // Create many CodingSites
+     * const codingSite = await prisma.codingSite.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CodingSiteCreateManyArgs>(args?: SelectSubset<T, CodingSiteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CodingSites and returns the data saved in the database.
+     * @param {CodingSiteCreateManyAndReturnArgs} args - Arguments to create many CodingSites.
+     * @example
+     * // Create many CodingSites
+     * const codingSite = await prisma.codingSite.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CodingSites and only return the `id`
+     * const codingSiteWithIdOnly = await prisma.codingSite.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CodingSiteCreateManyAndReturnArgs>(args?: SelectSubset<T, CodingSiteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CodingSite.
+     * @param {CodingSiteDeleteArgs} args - Arguments to delete one CodingSite.
+     * @example
+     * // Delete one CodingSite
+     * const CodingSite = await prisma.codingSite.delete({
+     *   where: {
+     *     // ... filter to delete one CodingSite
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CodingSiteDeleteArgs>(args: SelectSubset<T, CodingSiteDeleteArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CodingSite.
+     * @param {CodingSiteUpdateArgs} args - Arguments to update one CodingSite.
+     * @example
+     * // Update one CodingSite
+     * const codingSite = await prisma.codingSite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CodingSiteUpdateArgs>(args: SelectSubset<T, CodingSiteUpdateArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CodingSites.
+     * @param {CodingSiteDeleteManyArgs} args - Arguments to filter CodingSites to delete.
+     * @example
+     * // Delete a few CodingSites
+     * const { count } = await prisma.codingSite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CodingSiteDeleteManyArgs>(args?: SelectSubset<T, CodingSiteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodingSites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CodingSites
+     * const codingSite = await prisma.codingSite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CodingSiteUpdateManyArgs>(args: SelectSubset<T, CodingSiteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodingSites and returns the data updated in the database.
+     * @param {CodingSiteUpdateManyAndReturnArgs} args - Arguments to update many CodingSites.
+     * @example
+     * // Update many CodingSites
+     * const codingSite = await prisma.codingSite.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CodingSites and only return the `id`
+     * const codingSiteWithIdOnly = await prisma.codingSite.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CodingSiteUpdateManyAndReturnArgs>(args: SelectSubset<T, CodingSiteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CodingSite.
+     * @param {CodingSiteUpsertArgs} args - Arguments to update or create a CodingSite.
+     * @example
+     * // Update or create a CodingSite
+     * const codingSite = await prisma.codingSite.upsert({
+     *   create: {
+     *     // ... data to create a CodingSite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CodingSite we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CodingSiteUpsertArgs>(args: SelectSubset<T, CodingSiteUpsertArgs<ExtArgs>>): Prisma__CodingSiteClient<$Result.GetResult<Prisma.$CodingSitePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CodingSites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteCountArgs} args - Arguments to filter CodingSites to count.
+     * @example
+     * // Count the number of CodingSites
+     * const count = await prisma.codingSite.count({
+     *   where: {
+     *     // ... the filter for the CodingSites we want to count
+     *   }
+     * })
+    **/
+    count<T extends CodingSiteCountArgs>(
+      args?: Subset<T, CodingSiteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CodingSiteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CodingSite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CodingSiteAggregateArgs>(args: Subset<T, CodingSiteAggregateArgs>): Prisma.PrismaPromise<GetCodingSiteAggregateType<T>>
+
+    /**
+     * Group by CodingSite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodingSiteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CodingSiteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CodingSiteGroupByArgs['orderBy'] }
+        : { orderBy?: CodingSiteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CodingSiteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodingSiteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CodingSite model
+   */
+  readonly fields: CodingSiteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CodingSite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CodingSiteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CodingSite model
+   */
+  interface CodingSiteFieldRefs {
+    readonly id: FieldRef<"CodingSite", 'String'>
+    readonly userId: FieldRef<"CodingSite", 'String'>
+    readonly codeforcesProfile: FieldRef<"CodingSite", 'String'>
+    readonly codechefProfile: FieldRef<"CodingSite", 'String'>
+    readonly leetcodeProfile: FieldRef<"CodingSite", 'String'>
+    readonly githubProfile: FieldRef<"CodingSite", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CodingSite findUnique
+   */
+  export type CodingSiteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter, which CodingSite to fetch.
+     */
+    where: CodingSiteWhereUniqueInput
+  }
+
+  /**
+   * CodingSite findUniqueOrThrow
+   */
+  export type CodingSiteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter, which CodingSite to fetch.
+     */
+    where: CodingSiteWhereUniqueInput
+  }
+
+  /**
+   * CodingSite findFirst
+   */
+  export type CodingSiteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter, which CodingSite to fetch.
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodingSites to fetch.
+     */
+    orderBy?: CodingSiteOrderByWithRelationInput | CodingSiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodingSites.
+     */
+    cursor?: CodingSiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodingSites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodingSites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodingSites.
+     */
+    distinct?: CodingSiteScalarFieldEnum | CodingSiteScalarFieldEnum[]
+  }
+
+  /**
+   * CodingSite findFirstOrThrow
+   */
+  export type CodingSiteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter, which CodingSite to fetch.
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodingSites to fetch.
+     */
+    orderBy?: CodingSiteOrderByWithRelationInput | CodingSiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodingSites.
+     */
+    cursor?: CodingSiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodingSites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodingSites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodingSites.
+     */
+    distinct?: CodingSiteScalarFieldEnum | CodingSiteScalarFieldEnum[]
+  }
+
+  /**
+   * CodingSite findMany
+   */
+  export type CodingSiteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter, which CodingSites to fetch.
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodingSites to fetch.
+     */
+    orderBy?: CodingSiteOrderByWithRelationInput | CodingSiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CodingSites.
+     */
+    cursor?: CodingSiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodingSites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodingSites.
+     */
+    skip?: number
+    distinct?: CodingSiteScalarFieldEnum | CodingSiteScalarFieldEnum[]
+  }
+
+  /**
+   * CodingSite create
+   */
+  export type CodingSiteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CodingSite.
+     */
+    data: XOR<CodingSiteCreateInput, CodingSiteUncheckedCreateInput>
+  }
+
+  /**
+   * CodingSite createMany
+   */
+  export type CodingSiteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CodingSites.
+     */
+    data: CodingSiteCreateManyInput | CodingSiteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CodingSite createManyAndReturn
+   */
+  export type CodingSiteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * The data used to create many CodingSites.
+     */
+    data: CodingSiteCreateManyInput | CodingSiteCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodingSite update
+   */
+  export type CodingSiteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CodingSite.
+     */
+    data: XOR<CodingSiteUpdateInput, CodingSiteUncheckedUpdateInput>
+    /**
+     * Choose, which CodingSite to update.
+     */
+    where: CodingSiteWhereUniqueInput
+  }
+
+  /**
+   * CodingSite updateMany
+   */
+  export type CodingSiteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CodingSites.
+     */
+    data: XOR<CodingSiteUpdateManyMutationInput, CodingSiteUncheckedUpdateManyInput>
+    /**
+     * Filter which CodingSites to update
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * Limit how many CodingSites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodingSite updateManyAndReturn
+   */
+  export type CodingSiteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * The data used to update CodingSites.
+     */
+    data: XOR<CodingSiteUpdateManyMutationInput, CodingSiteUncheckedUpdateManyInput>
+    /**
+     * Filter which CodingSites to update
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * Limit how many CodingSites to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodingSite upsert
+   */
+  export type CodingSiteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CodingSite to update in case it exists.
+     */
+    where: CodingSiteWhereUniqueInput
+    /**
+     * In case the CodingSite found by the `where` argument doesn't exist, create a new CodingSite with this data.
+     */
+    create: XOR<CodingSiteCreateInput, CodingSiteUncheckedCreateInput>
+    /**
+     * In case the CodingSite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CodingSiteUpdateInput, CodingSiteUncheckedUpdateInput>
+  }
+
+  /**
+   * CodingSite delete
+   */
+  export type CodingSiteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
+    /**
+     * Filter which CodingSite to delete.
+     */
+    where: CodingSiteWhereUniqueInput
+  }
+
+  /**
+   * CodingSite deleteMany
+   */
+  export type CodingSiteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodingSites to delete
+     */
+    where?: CodingSiteWhereInput
+    /**
+     * Limit how many CodingSites to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodingSite without action
+   */
+  export type CodingSiteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodingSite
+     */
+    select?: CodingSiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodingSite
+     */
+    omit?: CodingSiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodingSiteInclude<ExtArgs> | null
   }
 
 
@@ -1971,6 +3201,18 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const CodingSiteScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    codeforcesProfile: 'codeforcesProfile',
+    codechefProfile: 'codechefProfile',
+    leetcodeProfile: 'leetcodeProfile',
+    githubProfile: 'githubProfile'
+  };
+
+  export type CodingSiteScalarFieldEnum = (typeof CodingSiteScalarFieldEnum)[keyof typeof CodingSiteScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2069,6 +3311,7 @@ export namespace Prisma {
     IsVerified?: BoolNullableFilter<"User"> | boolean | null
     VerificationToken?: StringNullableFilter<"User"> | string | null
     VerifyOtpExpireAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    codingSites?: XOR<CodingSiteNullableScalarRelationFilter, CodingSiteWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -2083,6 +3326,7 @@ export namespace Prisma {
     IsVerified?: SortOrderInput | SortOrder
     VerificationToken?: SortOrderInput | SortOrder
     VerifyOtpExpireAt?: SortOrderInput | SortOrder
+    codingSites?: CodingSiteOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2100,6 +3344,7 @@ export namespace Prisma {
     IsVerified?: BoolNullableFilter<"User"> | boolean | null
     VerificationToken?: StringNullableFilter<"User"> | string | null
     VerifyOtpExpireAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    codingSites?: XOR<CodingSiteNullableScalarRelationFilter, CodingSiteWhereInput> | null
   }, "username" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -2136,6 +3381,66 @@ export namespace Prisma {
     VerifyOtpExpireAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
+  export type CodingSiteWhereInput = {
+    AND?: CodingSiteWhereInput | CodingSiteWhereInput[]
+    OR?: CodingSiteWhereInput[]
+    NOT?: CodingSiteWhereInput | CodingSiteWhereInput[]
+    id?: StringFilter<"CodingSite"> | string
+    userId?: StringFilter<"CodingSite"> | string
+    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
+    codechefProfile?: StringNullableFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
+    githubProfile?: StringNullableFilter<"CodingSite"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CodingSiteOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    codeforcesProfile?: SortOrderInput | SortOrder
+    codechefProfile?: SortOrderInput | SortOrder
+    leetcodeProfile?: SortOrderInput | SortOrder
+    githubProfile?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type CodingSiteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: CodingSiteWhereInput | CodingSiteWhereInput[]
+    OR?: CodingSiteWhereInput[]
+    NOT?: CodingSiteWhereInput | CodingSiteWhereInput[]
+    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
+    codechefProfile?: StringNullableFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
+    githubProfile?: StringNullableFilter<"CodingSite"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type CodingSiteOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    codeforcesProfile?: SortOrderInput | SortOrder
+    codechefProfile?: SortOrderInput | SortOrder
+    leetcodeProfile?: SortOrderInput | SortOrder
+    githubProfile?: SortOrderInput | SortOrder
+    _count?: CodingSiteCountOrderByAggregateInput
+    _max?: CodingSiteMaxOrderByAggregateInput
+    _min?: CodingSiteMinOrderByAggregateInput
+  }
+
+  export type CodingSiteScalarWhereWithAggregatesInput = {
+    AND?: CodingSiteScalarWhereWithAggregatesInput | CodingSiteScalarWhereWithAggregatesInput[]
+    OR?: CodingSiteScalarWhereWithAggregatesInput[]
+    NOT?: CodingSiteScalarWhereWithAggregatesInput | CodingSiteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CodingSite"> | string
+    userId?: StringWithAggregatesFilter<"CodingSite"> | string
+    codeforcesProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+    codechefProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+    githubProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+  }
+
   export type UserCreateInput = {
     username?: string
     name?: string | null
@@ -2148,6 +3453,7 @@ export namespace Prisma {
     IsVerified?: boolean | null
     VerificationToken?: string | null
     VerifyOtpExpireAt?: Date | string | null
+    codingSites?: CodingSiteCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -2162,6 +3468,7 @@ export namespace Prisma {
     IsVerified?: boolean | null
     VerificationToken?: string | null
     VerifyOtpExpireAt?: Date | string | null
+    codingSites?: CodingSiteUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -2176,6 +3483,7 @@ export namespace Prisma {
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
     VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codingSites?: CodingSiteUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2190,6 +3498,7 @@ export namespace Prisma {
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
     VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codingSites?: CodingSiteUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -2232,6 +3541,68 @@ export namespace Prisma {
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
     VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CodingSiteCreateInput = {
+    id?: string
+    codeforcesProfile?: string | null
+    codechefProfile?: string | null
+    leetcodeProfile?: string | null
+    githubProfile?: string | null
+    user: UserCreateNestedOneWithoutCodingSitesInput
+  }
+
+  export type CodingSiteUncheckedCreateInput = {
+    id?: string
+    userId: string
+    codeforcesProfile?: string | null
+    codechefProfile?: string | null
+    leetcodeProfile?: string | null
+    githubProfile?: string | null
+  }
+
+  export type CodingSiteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutCodingSitesNestedInput
+  }
+
+  export type CodingSiteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CodingSiteCreateManyInput = {
+    id?: string
+    userId: string
+    codeforcesProfile?: string | null
+    codechefProfile?: string | null
+    leetcodeProfile?: string | null
+    githubProfile?: string | null
+  }
+
+  export type CodingSiteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CodingSiteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2289,6 +3660,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type CodingSiteNullableScalarRelationFilter = {
+    is?: CodingSiteWhereInput | null
+    isNot?: CodingSiteWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -2410,6 +3786,50 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type CodingSiteCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    codeforcesProfile?: SortOrder
+    codechefProfile?: SortOrder
+    leetcodeProfile?: SortOrder
+    githubProfile?: SortOrder
+  }
+
+  export type CodingSiteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    codeforcesProfile?: SortOrder
+    codechefProfile?: SortOrder
+    leetcodeProfile?: SortOrder
+    githubProfile?: SortOrder
+  }
+
+  export type CodingSiteMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    codeforcesProfile?: SortOrder
+    codechefProfile?: SortOrder
+    leetcodeProfile?: SortOrder
+    githubProfile?: SortOrder
+  }
+
+  export type CodingSiteCreateNestedOneWithoutUserInput = {
+    create?: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+    connectOrCreate?: CodingSiteCreateOrConnectWithoutUserInput
+    connect?: CodingSiteWhereUniqueInput
+  }
+
+  export type CodingSiteUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+    connectOrCreate?: CodingSiteCreateOrConnectWithoutUserInput
+    connect?: CodingSiteWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2428,6 +3848,40 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type CodingSiteUpdateOneWithoutUserNestedInput = {
+    create?: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+    connectOrCreate?: CodingSiteCreateOrConnectWithoutUserInput
+    upsert?: CodingSiteUpsertWithoutUserInput
+    disconnect?: CodingSiteWhereInput | boolean
+    delete?: CodingSiteWhereInput | boolean
+    connect?: CodingSiteWhereUniqueInput
+    update?: XOR<XOR<CodingSiteUpdateToOneWithWhereWithoutUserInput, CodingSiteUpdateWithoutUserInput>, CodingSiteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CodingSiteUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+    connectOrCreate?: CodingSiteCreateOrConnectWithoutUserInput
+    upsert?: CodingSiteUpsertWithoutUserInput
+    disconnect?: CodingSiteWhereInput | boolean
+    delete?: CodingSiteWhereInput | boolean
+    connect?: CodingSiteWhereUniqueInput
+    update?: XOR<XOR<CodingSiteUpdateToOneWithWhereWithoutUserInput, CodingSiteUpdateWithoutUserInput>, CodingSiteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserCreateNestedOneWithoutCodingSitesInput = {
+    create?: XOR<UserCreateWithoutCodingSitesInput, UserUncheckedCreateWithoutCodingSitesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodingSitesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutCodingSitesNestedInput = {
+    create?: XOR<UserCreateWithoutCodingSitesInput, UserUncheckedCreateWithoutCodingSitesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodingSitesInput
+    upsert?: UserUpsertWithoutCodingSitesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCodingSitesInput, UserUpdateWithoutCodingSitesInput>, UserUncheckedUpdateWithoutCodingSitesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2575,6 +4029,126 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type CodingSiteCreateWithoutUserInput = {
+    id?: string
+    codeforcesProfile?: string | null
+    codechefProfile?: string | null
+    leetcodeProfile?: string | null
+    githubProfile?: string | null
+  }
+
+  export type CodingSiteUncheckedCreateWithoutUserInput = {
+    id?: string
+    codeforcesProfile?: string | null
+    codechefProfile?: string | null
+    leetcodeProfile?: string | null
+    githubProfile?: string | null
+  }
+
+  export type CodingSiteCreateOrConnectWithoutUserInput = {
+    where: CodingSiteWhereUniqueInput
+    create: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+  }
+
+  export type CodingSiteUpsertWithoutUserInput = {
+    update: XOR<CodingSiteUpdateWithoutUserInput, CodingSiteUncheckedUpdateWithoutUserInput>
+    create: XOR<CodingSiteCreateWithoutUserInput, CodingSiteUncheckedCreateWithoutUserInput>
+    where?: CodingSiteWhereInput
+  }
+
+  export type CodingSiteUpdateToOneWithWhereWithoutUserInput = {
+    where?: CodingSiteWhereInput
+    data: XOR<CodingSiteUpdateWithoutUserInput, CodingSiteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CodingSiteUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CodingSiteUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserCreateWithoutCodingSitesInput = {
+    username?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    phone?: string | null
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    IsVerified?: boolean | null
+    VerificationToken?: string | null
+    VerifyOtpExpireAt?: Date | string | null
+  }
+
+  export type UserUncheckedCreateWithoutCodingSitesInput = {
+    username?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    phone?: string | null
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    IsVerified?: boolean | null
+    VerificationToken?: string | null
+    VerifyOtpExpireAt?: Date | string | null
+  }
+
+  export type UserCreateOrConnectWithoutCodingSitesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCodingSitesInput, UserUncheckedCreateWithoutCodingSitesInput>
+  }
+
+  export type UserUpsertWithoutCodingSitesInput = {
+    update: XOR<UserUpdateWithoutCodingSitesInput, UserUncheckedUpdateWithoutCodingSitesInput>
+    create: XOR<UserCreateWithoutCodingSitesInput, UserUncheckedCreateWithoutCodingSitesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCodingSitesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCodingSitesInput, UserUncheckedUpdateWithoutCodingSitesInput>
+  }
+
+  export type UserUpdateWithoutCodingSitesInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUncheckedUpdateWithoutCodingSitesInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

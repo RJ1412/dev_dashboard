@@ -131,6 +131,15 @@ exports.Prisma.UserScalarFieldEnum = {
   VerifyOtpExpireAt: 'VerifyOtpExpireAt'
 };
 
+exports.Prisma.CodingSiteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  codeforcesProfile: 'codeforcesProfile',
+  codechefProfile: 'codechefProfile',
+  leetcodeProfile: 'leetcodeProfile',
+  githubProfile: 'githubProfile'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -148,7 +157,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  CodingSite: 'CodingSite'
 };
 
 /**

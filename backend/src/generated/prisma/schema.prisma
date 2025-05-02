@@ -20,4 +20,18 @@ model User {
   IsVerified        Boolean?  @default(false)
   VerificationToken String?
   VerifyOtpExpireAt DateTime?
+
+  // Relation to coding site links
+  codingSites CodingSite?
+}
+
+model CodingSite {
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [username])
+  userId String @unique
+
+  codeforcesProfile String?
+  codechefProfile   String?
+  leetcodeProfile   String?
+  githubProfile     String?
 }
