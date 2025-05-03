@@ -18,6 +18,8 @@ model User {
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
   IsVerified        Boolean?    @default(false)
+  resetToken       String?
+  resetTokenExpiry DateTime?
   VerifyOtpExpireAt DateTime?
   VerificationToken String?
   codingSites       CodingSite?

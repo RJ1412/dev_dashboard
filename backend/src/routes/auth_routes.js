@@ -1,19 +1,21 @@
 import express from "express";
-import { register , login , logout , sendVerifyOtp ,verifyOtp } from "../controllers/controller_auth.js";
+import { register , login , logout , sendVerifyOtp ,verifyOtp, forgetpassword, resetpassword } from "../controllers/controller_auth.js";
 import {userAuth} from "../middleware/auth_middleware.js"
-
+resetpassword
 const authRoutes = express.Router();
 
 authRoutes.post("/register" , register)
 
 authRoutes.post("/login" , login)
 
-authRoutes.post("/logout" , logout)
+authRoutes.post("/logout" ,userAuth, logout)
 
-authRoutes.post("/send-verify-otp" , userAuth ,  sendVerifyOtp)
+authRoutes.post("/send-verify-otp" ,  sendVerifyOtp)
 
-authRoutes.post("/verify-account" , userAuth ,  verifyOtp)
+authRoutes.post("/verify-account"  ,  verifyOtp)
 
+authRoutes.post("/send-reset-otp", forgetpassword);
+authRoutes.post("/reset-password", resetpassword);
 
 
 

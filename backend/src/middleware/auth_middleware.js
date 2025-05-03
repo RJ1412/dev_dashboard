@@ -1,31 +1,25 @@
-import jwt from "jsonwebtoken"
-import {db} from "../libs/db.js"
 export const userAuth = async (req , res , next) => {
     const token = req.cookies.token || req.cookies.jwt;
-    if(!token) {
-        return res.json({
-            sucess : false ,
+    if (!token) {
+        return res.status(401).json({
+            success: false,
             message: "Login Again"
-        })
+        });
     }
 
     try {
-        const tokenDecode = jwt.verify(token , process.env.JWT_SECRET)
-        console.log(tokenDecode);
-        
-        if(tokenDecode.email){
+        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
+        if (tokenDecode.email) {
             req.body.email = tokenDecode.email;
+            next(); // only proceed if everything is valid
+        } else {
+            return res.status(401).json({
+                message: 'Login again'
+            });
         }
-        else{
-            return res.json({
-                message: 'login again'
-            })
-        }
-       
-
     } catch (error) {
-        
+        return res.status(401).json({
+            message: 'Invalid or expired token'
+        });
     }
-    next()
-}
-
+};

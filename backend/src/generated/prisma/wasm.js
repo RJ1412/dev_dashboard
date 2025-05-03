@@ -127,17 +127,19 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   IsVerified: 'IsVerified',
-  VerificationToken: 'VerificationToken',
-  VerifyOtpExpireAt: 'VerifyOtpExpireAt'
+  resetToken: 'resetToken',
+  resetTokenExpiry: 'resetTokenExpiry',
+  VerifyOtpExpireAt: 'VerifyOtpExpireAt',
+  VerificationToken: 'VerificationToken'
 };
 
 exports.Prisma.CodingSiteScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  codeforcesProfile: 'codeforcesProfile',
   codechefProfile: 'codechefProfile',
-  leetcodeProfile: 'leetcodeProfile',
-  githubProfile: 'githubProfile'
+  codeforcesProfile: 'codeforcesProfile',
+  githubProfile: 'githubProfile',
+  leetcodeProfile: 'leetcodeProfile'
 };
 
 exports.Prisma.SortOrder = {

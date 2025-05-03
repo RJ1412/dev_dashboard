@@ -980,8 +980,10 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     IsVerified: boolean | null
-    VerificationToken: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
     VerifyOtpExpireAt: Date | null
+    VerificationToken: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -994,8 +996,10 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     IsVerified: boolean | null
-    VerificationToken: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
     VerifyOtpExpireAt: Date | null
+    VerificationToken: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1008,8 +1012,10 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     IsVerified: number
-    VerificationToken: number
+    resetToken: number
+    resetTokenExpiry: number
     VerifyOtpExpireAt: number
+    VerificationToken: number
     _all: number
   }
 
@@ -1024,8 +1030,10 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     IsVerified?: true
-    VerificationToken?: true
+    resetToken?: true
+    resetTokenExpiry?: true
     VerifyOtpExpireAt?: true
+    VerificationToken?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1038,8 +1046,10 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     IsVerified?: true
-    VerificationToken?: true
+    resetToken?: true
+    resetTokenExpiry?: true
     VerifyOtpExpireAt?: true
+    VerificationToken?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1052,8 +1062,10 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     IsVerified?: true
-    VerificationToken?: true
+    resetToken?: true
+    resetTokenExpiry?: true
     VerifyOtpExpireAt?: true
+    VerificationToken?: true
     _all?: true
   }
 
@@ -1139,8 +1151,10 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     IsVerified: boolean | null
-    VerificationToken: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
     VerifyOtpExpireAt: Date | null
+    VerificationToken: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1170,8 +1184,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     IsVerified?: boolean
-    VerificationToken?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
     VerifyOtpExpireAt?: boolean
+    VerificationToken?: boolean
     codingSites?: boolean | User$codingSitesArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1185,8 +1201,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     IsVerified?: boolean
-    VerificationToken?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
     VerifyOtpExpireAt?: boolean
+    VerificationToken?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1199,8 +1217,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     IsVerified?: boolean
-    VerificationToken?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
     VerifyOtpExpireAt?: boolean
+    VerificationToken?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1213,11 +1233,13 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     IsVerified?: boolean
-    VerificationToken?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
     VerifyOtpExpireAt?: boolean
+    VerificationToken?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"username" | "name" | "email" | "image" | "phone" | "password" | "createdAt" | "updatedAt" | "IsVerified" | "VerificationToken" | "VerifyOtpExpireAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"username" | "name" | "email" | "image" | "phone" | "password" | "createdAt" | "updatedAt" | "IsVerified" | "resetToken" | "resetTokenExpiry" | "VerifyOtpExpireAt" | "VerificationToken", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     codingSites?: boolean | User$codingSitesArgs<ExtArgs>
   }
@@ -1239,8 +1261,10 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       IsVerified: boolean | null
-      VerificationToken: string | null
+      resetToken: string | null
+      resetTokenExpiry: Date | null
       VerifyOtpExpireAt: Date | null
+      VerificationToken: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1674,8 +1698,10 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly IsVerified: FieldRef<"User", 'Boolean'>
-    readonly VerificationToken: FieldRef<"User", 'String'>
+    readonly resetToken: FieldRef<"User", 'String'>
+    readonly resetTokenExpiry: FieldRef<"User", 'DateTime'>
     readonly VerifyOtpExpireAt: FieldRef<"User", 'DateTime'>
+    readonly VerificationToken: FieldRef<"User", 'String'>
   }
     
 
@@ -2114,28 +2140,28 @@ export namespace Prisma {
   export type CodingSiteMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    codeforcesProfile: string | null
     codechefProfile: string | null
-    leetcodeProfile: string | null
+    codeforcesProfile: string | null
     githubProfile: string | null
+    leetcodeProfile: string | null
   }
 
   export type CodingSiteMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    codeforcesProfile: string | null
     codechefProfile: string | null
-    leetcodeProfile: string | null
+    codeforcesProfile: string | null
     githubProfile: string | null
+    leetcodeProfile: string | null
   }
 
   export type CodingSiteCountAggregateOutputType = {
     id: number
     userId: number
-    codeforcesProfile: number
     codechefProfile: number
-    leetcodeProfile: number
+    codeforcesProfile: number
     githubProfile: number
+    leetcodeProfile: number
     _all: number
   }
 
@@ -2143,28 +2169,28 @@ export namespace Prisma {
   export type CodingSiteMinAggregateInputType = {
     id?: true
     userId?: true
-    codeforcesProfile?: true
     codechefProfile?: true
-    leetcodeProfile?: true
+    codeforcesProfile?: true
     githubProfile?: true
+    leetcodeProfile?: true
   }
 
   export type CodingSiteMaxAggregateInputType = {
     id?: true
     userId?: true
-    codeforcesProfile?: true
     codechefProfile?: true
-    leetcodeProfile?: true
+    codeforcesProfile?: true
     githubProfile?: true
+    leetcodeProfile?: true
   }
 
   export type CodingSiteCountAggregateInputType = {
     id?: true
     userId?: true
-    codeforcesProfile?: true
     codechefProfile?: true
-    leetcodeProfile?: true
+    codeforcesProfile?: true
     githubProfile?: true
+    leetcodeProfile?: true
     _all?: true
   }
 
@@ -2243,10 +2269,10 @@ export namespace Prisma {
   export type CodingSiteGroupByOutputType = {
     id: string
     userId: string
-    codeforcesProfile: string | null
     codechefProfile: string | null
-    leetcodeProfile: string | null
+    codeforcesProfile: string | null
     githubProfile: string | null
+    leetcodeProfile: string | null
     _count: CodingSiteCountAggregateOutputType | null
     _min: CodingSiteMinAggregateOutputType | null
     _max: CodingSiteMaxAggregateOutputType | null
@@ -2269,43 +2295,43 @@ export namespace Prisma {
   export type CodingSiteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    codeforcesProfile?: boolean
     codechefProfile?: boolean
-    leetcodeProfile?: boolean
+    codeforcesProfile?: boolean
     githubProfile?: boolean
+    leetcodeProfile?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["codingSite"]>
 
   export type CodingSiteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    codeforcesProfile?: boolean
     codechefProfile?: boolean
-    leetcodeProfile?: boolean
+    codeforcesProfile?: boolean
     githubProfile?: boolean
+    leetcodeProfile?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["codingSite"]>
 
   export type CodingSiteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    codeforcesProfile?: boolean
     codechefProfile?: boolean
-    leetcodeProfile?: boolean
+    codeforcesProfile?: boolean
     githubProfile?: boolean
+    leetcodeProfile?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["codingSite"]>
 
   export type CodingSiteSelectScalar = {
     id?: boolean
     userId?: boolean
-    codeforcesProfile?: boolean
     codechefProfile?: boolean
-    leetcodeProfile?: boolean
+    codeforcesProfile?: boolean
     githubProfile?: boolean
+    leetcodeProfile?: boolean
   }
 
-  export type CodingSiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "codeforcesProfile" | "codechefProfile" | "leetcodeProfile" | "githubProfile", ExtArgs["result"]["codingSite"]>
+  export type CodingSiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "codechefProfile" | "codeforcesProfile" | "githubProfile" | "leetcodeProfile", ExtArgs["result"]["codingSite"]>
   export type CodingSiteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2324,10 +2350,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      codeforcesProfile: string | null
       codechefProfile: string | null
-      leetcodeProfile: string | null
+      codeforcesProfile: string | null
       githubProfile: string | null
+      leetcodeProfile: string | null
     }, ExtArgs["result"]["codingSite"]>
     composites: {}
   }
@@ -2754,10 +2780,10 @@ export namespace Prisma {
   interface CodingSiteFieldRefs {
     readonly id: FieldRef<"CodingSite", 'String'>
     readonly userId: FieldRef<"CodingSite", 'String'>
-    readonly codeforcesProfile: FieldRef<"CodingSite", 'String'>
     readonly codechefProfile: FieldRef<"CodingSite", 'String'>
-    readonly leetcodeProfile: FieldRef<"CodingSite", 'String'>
+    readonly codeforcesProfile: FieldRef<"CodingSite", 'String'>
     readonly githubProfile: FieldRef<"CodingSite", 'String'>
+    readonly leetcodeProfile: FieldRef<"CodingSite", 'String'>
   }
     
 
@@ -3196,8 +3222,10 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     IsVerified: 'IsVerified',
-    VerificationToken: 'VerificationToken',
-    VerifyOtpExpireAt: 'VerifyOtpExpireAt'
+    resetToken: 'resetToken',
+    resetTokenExpiry: 'resetTokenExpiry',
+    VerifyOtpExpireAt: 'VerifyOtpExpireAt',
+    VerificationToken: 'VerificationToken'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3206,10 +3234,10 @@ export namespace Prisma {
   export const CodingSiteScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    codeforcesProfile: 'codeforcesProfile',
     codechefProfile: 'codechefProfile',
-    leetcodeProfile: 'leetcodeProfile',
-    githubProfile: 'githubProfile'
+    codeforcesProfile: 'codeforcesProfile',
+    githubProfile: 'githubProfile',
+    leetcodeProfile: 'leetcodeProfile'
   };
 
   export type CodingSiteScalarFieldEnum = (typeof CodingSiteScalarFieldEnum)[keyof typeof CodingSiteScalarFieldEnum]
@@ -3309,8 +3337,10 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     IsVerified?: BoolNullableFilter<"User"> | boolean | null
-    VerificationToken?: StringNullableFilter<"User"> | string | null
+    resetToken?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     VerifyOtpExpireAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    VerificationToken?: StringNullableFilter<"User"> | string | null
     codingSites?: XOR<CodingSiteNullableScalarRelationFilter, CodingSiteWhereInput> | null
   }
 
@@ -3324,8 +3354,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     IsVerified?: SortOrderInput | SortOrder
-    VerificationToken?: SortOrderInput | SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    resetTokenExpiry?: SortOrderInput | SortOrder
     VerifyOtpExpireAt?: SortOrderInput | SortOrder
+    VerificationToken?: SortOrderInput | SortOrder
     codingSites?: CodingSiteOrderByWithRelationInput
   }
 
@@ -3342,8 +3374,10 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     IsVerified?: BoolNullableFilter<"User"> | boolean | null
-    VerificationToken?: StringNullableFilter<"User"> | string | null
+    resetToken?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     VerifyOtpExpireAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    VerificationToken?: StringNullableFilter<"User"> | string | null
     codingSites?: XOR<CodingSiteNullableScalarRelationFilter, CodingSiteWhereInput> | null
   }, "username" | "username" | "email">
 
@@ -3357,8 +3391,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     IsVerified?: SortOrderInput | SortOrder
-    VerificationToken?: SortOrderInput | SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    resetTokenExpiry?: SortOrderInput | SortOrder
     VerifyOtpExpireAt?: SortOrderInput | SortOrder
+    VerificationToken?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3377,8 +3413,10 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     IsVerified?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
-    VerificationToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     VerifyOtpExpireAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    VerificationToken?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type CodingSiteWhereInput = {
@@ -3387,20 +3425,20 @@ export namespace Prisma {
     NOT?: CodingSiteWhereInput | CodingSiteWhereInput[]
     id?: StringFilter<"CodingSite"> | string
     userId?: StringFilter<"CodingSite"> | string
-    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
     codechefProfile?: StringNullableFilter<"CodingSite"> | string | null
-    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
+    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
     githubProfile?: StringNullableFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type CodingSiteOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    codeforcesProfile?: SortOrderInput | SortOrder
     codechefProfile?: SortOrderInput | SortOrder
-    leetcodeProfile?: SortOrderInput | SortOrder
+    codeforcesProfile?: SortOrderInput | SortOrder
     githubProfile?: SortOrderInput | SortOrder
+    leetcodeProfile?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -3410,20 +3448,20 @@ export namespace Prisma {
     AND?: CodingSiteWhereInput | CodingSiteWhereInput[]
     OR?: CodingSiteWhereInput[]
     NOT?: CodingSiteWhereInput | CodingSiteWhereInput[]
-    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
     codechefProfile?: StringNullableFilter<"CodingSite"> | string | null
-    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
+    codeforcesProfile?: StringNullableFilter<"CodingSite"> | string | null
     githubProfile?: StringNullableFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableFilter<"CodingSite"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type CodingSiteOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    codeforcesProfile?: SortOrderInput | SortOrder
     codechefProfile?: SortOrderInput | SortOrder
-    leetcodeProfile?: SortOrderInput | SortOrder
+    codeforcesProfile?: SortOrderInput | SortOrder
     githubProfile?: SortOrderInput | SortOrder
+    leetcodeProfile?: SortOrderInput | SortOrder
     _count?: CodingSiteCountOrderByAggregateInput
     _max?: CodingSiteMaxOrderByAggregateInput
     _min?: CodingSiteMinOrderByAggregateInput
@@ -3435,10 +3473,10 @@ export namespace Prisma {
     NOT?: CodingSiteScalarWhereWithAggregatesInput | CodingSiteScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CodingSite"> | string
     userId?: StringWithAggregatesFilter<"CodingSite"> | string
-    codeforcesProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
     codechefProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
-    leetcodeProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+    codeforcesProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
     githubProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
+    leetcodeProfile?: StringNullableWithAggregatesFilter<"CodingSite"> | string | null
   }
 
   export type UserCreateInput = {
@@ -3451,8 +3489,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     IsVerified?: boolean | null
-    VerificationToken?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     VerifyOtpExpireAt?: Date | string | null
+    VerificationToken?: string | null
     codingSites?: CodingSiteCreateNestedOneWithoutUserInput
   }
 
@@ -3466,8 +3506,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     IsVerified?: boolean | null
-    VerificationToken?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     VerifyOtpExpireAt?: Date | string | null
+    VerificationToken?: string | null
     codingSites?: CodingSiteUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -3481,8 +3523,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     codingSites?: CodingSiteUpdateOneWithoutUserNestedInput
   }
 
@@ -3496,8 +3540,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     codingSites?: CodingSiteUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -3511,8 +3557,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     IsVerified?: boolean | null
-    VerificationToken?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     VerifyOtpExpireAt?: Date | string | null
+    VerificationToken?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3525,8 +3573,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3539,70 +3589,72 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CodingSiteCreateInput = {
     id?: string
-    codeforcesProfile?: string | null
     codechefProfile?: string | null
-    leetcodeProfile?: string | null
+    codeforcesProfile?: string | null
     githubProfile?: string | null
+    leetcodeProfile?: string | null
     user: UserCreateNestedOneWithoutCodingSitesInput
   }
 
   export type CodingSiteUncheckedCreateInput = {
     id?: string
     userId: string
-    codeforcesProfile?: string | null
     codechefProfile?: string | null
-    leetcodeProfile?: string | null
+    codeforcesProfile?: string | null
     githubProfile?: string | null
+    leetcodeProfile?: string | null
   }
 
   export type CodingSiteUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutCodingSitesNestedInput
   }
 
   export type CodingSiteUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CodingSiteCreateManyInput = {
     id?: string
     userId: string
-    codeforcesProfile?: string | null
     codechefProfile?: string | null
-    leetcodeProfile?: string | null
+    codeforcesProfile?: string | null
     githubProfile?: string | null
+    leetcodeProfile?: string | null
   }
 
   export type CodingSiteUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CodingSiteUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3682,8 +3734,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     IsVerified?: SortOrder
-    VerificationToken?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
     VerifyOtpExpireAt?: SortOrder
+    VerificationToken?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -3696,8 +3750,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     IsVerified?: SortOrder
-    VerificationToken?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
     VerifyOtpExpireAt?: SortOrder
+    VerificationToken?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3710,8 +3766,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     IsVerified?: SortOrder
-    VerificationToken?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
     VerifyOtpExpireAt?: SortOrder
+    VerificationToken?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3794,28 +3852,28 @@ export namespace Prisma {
   export type CodingSiteCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    codeforcesProfile?: SortOrder
     codechefProfile?: SortOrder
-    leetcodeProfile?: SortOrder
+    codeforcesProfile?: SortOrder
     githubProfile?: SortOrder
+    leetcodeProfile?: SortOrder
   }
 
   export type CodingSiteMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    codeforcesProfile?: SortOrder
     codechefProfile?: SortOrder
-    leetcodeProfile?: SortOrder
+    codeforcesProfile?: SortOrder
     githubProfile?: SortOrder
+    leetcodeProfile?: SortOrder
   }
 
   export type CodingSiteMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    codeforcesProfile?: SortOrder
     codechefProfile?: SortOrder
-    leetcodeProfile?: SortOrder
+    codeforcesProfile?: SortOrder
     githubProfile?: SortOrder
+    leetcodeProfile?: SortOrder
   }
 
   export type CodingSiteCreateNestedOneWithoutUserInput = {
@@ -4033,18 +4091,18 @@ export namespace Prisma {
 
   export type CodingSiteCreateWithoutUserInput = {
     id?: string
-    codeforcesProfile?: string | null
     codechefProfile?: string | null
-    leetcodeProfile?: string | null
+    codeforcesProfile?: string | null
     githubProfile?: string | null
+    leetcodeProfile?: string | null
   }
 
   export type CodingSiteUncheckedCreateWithoutUserInput = {
     id?: string
-    codeforcesProfile?: string | null
     codechefProfile?: string | null
-    leetcodeProfile?: string | null
+    codeforcesProfile?: string | null
     githubProfile?: string | null
+    leetcodeProfile?: string | null
   }
 
   export type CodingSiteCreateOrConnectWithoutUserInput = {
@@ -4065,18 +4123,18 @@ export namespace Prisma {
 
   export type CodingSiteUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CodingSiteUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     codechefProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    codeforcesProfile?: NullableStringFieldUpdateOperationsInput | string | null
     githubProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    leetcodeProfile?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateWithoutCodingSitesInput = {
@@ -4089,8 +4147,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     IsVerified?: boolean | null
-    VerificationToken?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     VerifyOtpExpireAt?: Date | string | null
+    VerificationToken?: string | null
   }
 
   export type UserUncheckedCreateWithoutCodingSitesInput = {
@@ -4103,8 +4163,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     IsVerified?: boolean | null
-    VerificationToken?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     VerifyOtpExpireAt?: Date | string | null
+    VerificationToken?: string | null
   }
 
   export type UserCreateOrConnectWithoutCodingSitesInput = {
@@ -4133,8 +4195,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateWithoutCodingSitesInput = {
@@ -4147,8 +4211,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     IsVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     VerifyOtpExpireAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
